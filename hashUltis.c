@@ -41,10 +41,10 @@ void mapTypeAction(hash_t *hashMap,uint64_t hash,uint64_t value){
 
 	int64_t val;
 
-	uint8_t mapType = hashMap->type;
-	bool    count 	= hashMap->mapType == MAP_COUNT;
+	uint8_t mapType  = hashMap->type;
+	bool    mapCount = hashMap->mapType == MAP_COUNT;
 
-	if(count){
+	if(mapCount){
 
 		val = 1;
 		
@@ -76,6 +76,8 @@ void mapTypeAction(hash_t *hashMap,uint64_t hash,uint64_t value){
 
 	}else{
 
+		//MAP_KEY VALUE
+		
 		val = value;
 
 		switch(hashMap->type)
