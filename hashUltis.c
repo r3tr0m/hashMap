@@ -1,3 +1,6 @@
+
+//TYPE CAST TREAMENT FOR HASHMAP DATA STRUTURE
+
 void typeCastMap(hash_t *hashMap){
 
 	uint8_t numType = hashMap->type;
@@ -29,6 +32,79 @@ void typeCastMap(hash_t *hashMap){
 
 	}
 
+
+}
+
+//IDENTIFIE THE HASHMAP TYPE MAP_COUNT | MAP_KEY TAKE ACTION
+
+void mapTypeAction(hash_t *hashMap,uint64_t hash,uint64_t value){
+
+	int64_t val;
+
+	uint8_t mapType = hashMap->type;
+	bool    count 	= hashMap->mapType == MAP_COUNT;
+
+	if(count){
+
+		val = 1;
+		
+		switch(hashMap->type)
+		{
+
+			case UINT8_T:
+
+				hashMap->mapInt8_t[hash] += val;
+				break;
+
+			case UINT16_T:
+
+				hashMap->mapInt16_t[hash] += val;
+				break;
+
+			case UINT32_T:
+				hashMap->mapInt32_t[hash] += val;
+				break;
+
+			case UINT64_T:
+				hashMap->mapInt64_t[hash] += val;
+				break;
+
+			default:
+				break;
+
+		}
+
+	}else{
+
+		val = value;
+
+		switch(hashMap->type)
+		{
+
+			case UINT8_T:
+
+				hashMap->mapInt8_t[hash] = val;
+				break;
+
+			case UINT16_T:
+
+				hashMap->mapInt16_t[hash] = val;
+				break;
+
+			case UINT32_T:
+				hashMap->mapInt32_t[hash] = val;
+				break;
+
+			case UINT64_T:
+				hashMap->mapInt64_t[hash] = val;
+				break;
+
+			default:
+				break;
+
+		}
+
+	}
 
 }
 

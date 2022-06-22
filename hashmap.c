@@ -7,6 +7,7 @@
 #include "hashTypes.c"
 #include "hashUltis.c"
 #include "hashAlgs.c"
+#include "hashMapFuncs.c"
 
 hash_t* CreateHashMap(size_t size,uint8_t type,uint32_t hashAlg,uint8_t mapType){
 
@@ -57,37 +58,6 @@ uint64_t hashSetStream(hash_t *hashMap,byte_t *byteSeq){
 
 }
 
-void mapTypeAction(hash_t *hashMap,uint64_t hash,uint64_t value){
-
-	uint8_t mapType = hashMap->type;
-
-	bool count = hashMap->mapType == MAP_COUNT;
-
-	if(count)
-	{
-
-		switch(hashMap->type)
-		{
-
-			case UINT8_T:
-
-				hashMap->mapInt8_t[hash] += 1;
-				break;
-
-			case UINT16_T:
-
-				hashMap->mapInt16_t[hash] += 1;
-				break;
-
-			default:
-				break;
-
-		}
-
-	}
-
-}
-
 //NUMS HASHING
 
 uint64_t hashSetNum(hash_t *hashMap,uint64_t value){
@@ -110,10 +80,12 @@ uint64_t hashSetNum(hash_t *hashMap,uint64_t value){
 
 }
 
+
 int main(){
 
 	hash_t *hash = CreateHashMap(256,UINT32_T,PRIME_MOD_N,MAP_COUNT);
 
 	hashSetNum(hash,30);
+	hashCheckNum(hash,30);
 
 }

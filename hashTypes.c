@@ -1,3 +1,4 @@
+
 //GLOBAL VARIABLES
 
 //MULT_ADD
@@ -8,6 +9,8 @@ const unsigned int P = 1117;
 const unsigned int N = 1571;
 
 uint8_t bitHouse[] = {1,2,4,8,16,32,64,128};
+
+
 
 //MACROS
 
@@ -28,6 +31,8 @@ uint8_t bitHouse[] = {1,2,4,8,16,32,64,128};
 #define INT16_T 2
 #define INT8_T  1
 
+
+
 //ALG
 
 //-> byte sequence alg O(n)
@@ -47,9 +52,13 @@ uint8_t bitHouse[] = {1,2,4,8,16,32,64,128};
 #define MAP_COUNT    0b00000001
 #define MAP_KEY		 0b00000010
 
+
+
 //DATA STRUTURES AND ANOTHER TYPES
 
 typedef unsigned char uchar;
+
+//MAIN DATA_STRUTURE
 
 typedef struct HashMap{
 
@@ -72,7 +81,9 @@ typedef struct HashMap{
 
 }hash_t;
 
+
 //TREAT ANY KEY VALUE AS A BYTE STREAM
+
 
 typedef struct ByteSeq{
 
@@ -80,6 +91,7 @@ typedef struct ByteSeq{
 	uint64_t size;
 
 }byte_t;
+
 
 //ULTIS
 
