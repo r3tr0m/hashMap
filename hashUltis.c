@@ -9,7 +9,7 @@ void typeCastMap(hash_t *hashMap){
 
 		case UINT64_T:
 
-			hashMap->mapInt64_t = (uint64_t*) hashMap->map;
+			hashMap->mapInt64_t 	= (uint64_t*) hashMap->map;
 			break;
 
 		case UINT32_T:
@@ -24,7 +24,7 @@ void typeCastMap(hash_t *hashMap){
 
 		case UINT8_T:
 
-			hashMap->mapInt8_t = (uint8_t*) hashMap->map;
+			hashMap->mapInt8_t 	= (uint8_t*) hashMap->map;
 			break;
 
 		default:
