@@ -14,17 +14,17 @@ void typeCastMap(hash_t *hashMap){
 
 		case UINT32_T:
 
-			hashMap->mapInt32_t	= (uint32_t*) hashMap->map;
+			hashMap->mapInt32_t		= (uint32_t*) hashMap->map;
 			break;
 
 		case UINT16_T:
 
-			hashMap->mapInt16_t	= (uint16_t*) hashMap->map;
+			hashMap->mapInt16_t		= (uint16_t*) hashMap->map;
 			break;
 
 		case UINT8_T:
 
-			hashMap->mapInt8_t 	= (uint8_t*) hashMap->map;
+			hashMap->mapInt8_t 		= (uint8_t*) hashMap->map;
 			break;
 
 		default:
@@ -41,8 +41,8 @@ void mapTypeAction(hash_t *hashMap,uint64_t hash,uint64_t value){
 
 	int64_t val;
 
-	uint8_t mapType  = hashMap->type;
-	bool    mapCount = hashMap->mapType == MAP_COUNT;
+	uint8_t mapType = hashMap->type;
+	bool    mapCount 	= hashMap->mapType == MAP_COUNT;
 
 	if(mapCount){
 
@@ -76,8 +76,6 @@ void mapTypeAction(hash_t *hashMap,uint64_t hash,uint64_t value){
 
 	}else{
 
-		//MAP_KEY VALUE
-		
 		val = value;
 
 		switch(hashMap->type)

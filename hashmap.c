@@ -7,7 +7,7 @@
 #include "hashTypes.c"
 #include "hashUltis.c"
 #include "hashAlgs.c"
-#include "hashMapFuncs.c"
+
 
 hash_t* CreateHashMap(size_t size,uint8_t type,uint32_t hashAlg,uint8_t mapType){
 
@@ -85,7 +85,7 @@ int main(){
 
 	hash_t *hash = CreateHashMap(256,UINT32_T,PRIME_MOD_N,MAP_COUNT);
 
-	hashSetNum(hash,30);
-	hashCheckNum(hash,30);
-
+	//hashSetNum(hash,30);
+	//hashCheckNum(hash,30);
+	#include "hashMapFuncs.c"
 }

@@ -1,36 +1,82 @@
 
-//CHECK_HASH_MAP FUNCS
+//HASH_MAP_REMOVE FUNCS
 
-uint64_t hashCheckNum(hash_t *hashMap,uint64_t value){
+void* hashMapRemoveNum(hash_t *hashMap,uint64_t index){
 
-	uint64_t index = hashSetNum(hashMap,value);
+	uint8_t hashPointer 	= &((uint8_t*) hashMap->map)[index];
 
-	//return hashMap->map[index];
+	for(uint32_t byte=0;byte < (hashMap->type);byte++){
+
+		hashPointer[byte] 	= 0x00;
+
+	}
 
 }
 
-uint64_t hashCheckStream(hash_t *hashMap,byte_t *byteSeq){
+void* hashMapRemoveStream(hash_t *hashMap,byte_t *byteSeq){
+
+	uint64_t index 			= hashSetStream(hashMap,byteSeq);
+	uint8_t  hashPointer 	= &((uint8_t*) hashMap->map)[index];
+
+	for(uint32_t byte=0;byte < (byteSeq->size);byte++){
+
+		hashPointer[byte] = 0x00;
+
+	}
+
+}
+
+//HASH_MAP_GET / CHECK FUNCS
+
+byte_t* hashMapValue(hash_t *hashMap,uint64_t index){
+
+	byte_t *byteSeq 	= (byte_t*) malloc(sizeof(byte_t));
+	uchar  *byteStream  = (uchar*)  malloc(hashMap->type);
+
+	byteSeq->seq  = byteStream;
+	byteSeq->size = hashMap->type;
+
+	memcpy(byteSeq->seq,&((uint8_t*) hashMap->map)[index],byteSeq->size);
+
+	return byteSeq;
+
+}
+
+void* hashGetNum(hash_t *hashMap,uint64_t value){
+
+	uint64_t index 	= hashSetNum(hashMap,value);
+	byte_t *byteSeq = hashMapValue(hashMap,index);
+
+	return byteSeq->seq;
+
+}
+
+hashCheckStream(hashMap,person);
+
+uchar* hashGetStream(hash_t *hashMap,byte_t *byteSeq){
 
 	uint64_t index = hashSetStream(hashMap,byteSeq);
 
-	return ((unsigned char*) hashMap->map)[index];
+	return &((unsigned char*) hashMap->map)[index];
 
 }
 
-//REMOVE HASH_MAP VALUES FUNCS
 
-void hashMapRemoveNum(hash_t *hashMap,uint64_t value){
+bool hashCheckValue(hash_t *hashMap,uint64_t value){
 
-	uint64_t index = hashSetNum(hashMap,value);
+	bool	 isContain  = true;
+	uint64_t index 	 	= hashSetNum(hashMap,value);
+	uint8_t  hashValue 	= ((uint8_t*) hashMap->map)[index];
 
-	//hashMap->map[index] = 0x00;
 
+	if(hashValue <= 1){
+
+		isContain = false;
+		hashValue--;
+
+	}
+
+	return isContain;
+	
 }
 
-void hashMapRemoveStream(hash_t *hashMap,byte_t *byteSeq){
-
-	uint64_t index = hashSetStream(hashMap,byteSeq);
-
-	((unsigned char*) hashMap->map)[index] = 0x00;
-
-}
